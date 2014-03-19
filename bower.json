@@ -1,0 +1,49 @@
+{
+  "name"        : "ng-swiper",
+  "description" : "ngSwiper - AngularJS directives for Twitter Bootstrap",
+  "version"     : "0.0.1",
+  "keywords"    : [
+    "angular",
+    "swiper"
+  ],
+  "homepage" : "http://ehres.github.io/ng-swiper",
+  "bugs"     : "https://github.com/mgcrea/ng-swiper/issues",
+  "author"   : {
+    "name"  : "Maxime Grébauval",
+    "email" : "maxime.grebauval@icloud.com",
+    "url"   : "https://github.com/ehres"
+  },
+  "repository": {
+    "type" : "git",
+    "url"  : "https://github.com/ehres/ng-swiper.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "main": [
+    "dist/ng-swiper.min.js"
+  ],
+  "ignore": [
+    "docs",
+    "test",
+    "CONTRIBUTING.md"
+  ],
+  "dependencies": {
+    "angular" : "~1.2.10",
+    "swiper"  : "~2.5.1"
+  },
+  "devDependencies": {
+    "angular-animate"  : "~1.2.10",
+    "angular-i18n"     : "~1.2.10",
+    "angular-mocks"    : "~1.2.10",
+    "angular-motion"   : "~0.3.1",
+    "angular-route"    : "~1.2.10",
+    "angular-sanitize" : "~1.2.10",
+    "angular-scenario" : "~1.2.10",
+    "fastclick"        : "~0.6.11",
+    "font-awesome"     : "~4.0.3",
+    "highlightjs"      : "~8.0.0"
+  }
+}
