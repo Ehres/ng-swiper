@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Swiper demo</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="http://rawgithub.com/nolimits4web/Swiper/master/dist/idangerous.swiper.css" type="text/css" />
+  <script type="text/javascript" src="http://rawgithub.com/nolimits4web/Swiper/master/dist/idangerous.swiper.min.js"></script>
+  <script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+  <script type="text/javascript" src="../swiper.js"></script>
+  <script type="text/javascript" src="../slide.js"></script>
+  <script type="text/javascript" src="swiper.demo.js"></script>
+  <style type="text/css">
+    /* ===============================================================
+    Your custom styles, here you need to specify container's and slide's
+    sizes, pagination, etc.
+    ================================================================*/
+    .swiper-container {
+      /* Specify Swiper's Size: */
+    }
+    .swiper-slide {
+      /* Specify Slides's Size: */
+      background-color: #000;
+      /*display: inline-block;*/
+      color:white;
+      text-align: center;
+    }
+    .swiper-slide-active {
+      /* Specific active slide styling: */
+    }
+    .swiper-slide-visible {
+      /* Specific visible slide styling: */
+    }
+    /* ===============================================================
+    Pagination Styles
+    ================================================================*/
+    .swiper-pagination-switch {
+      /* Stylize pagination button: */
+    }
+    .swiper-active-switch {
+      /* Specific active button style: */
+    }
+    .swiper-visible-switch {
+      /* Specific visible button style: */
+    }
+    .swiper-container {
+    }
+  </style>
+</head>
+
+<body ng-app="ehres.ngSwiperDocs" ng-controller="SwiperDemoCtrl">
+  <div class="container">
+    <div class="row">
+      <h2>Swiper demo</h2>
+      <pre>{{slides | json}}</pre>
+      <div id="swiper" swiper>
+        <div slide ng-repeat="slide in slides">
+          <div ng-bind="slide.title"></div>
+          <div ng-bind="slide.name"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
