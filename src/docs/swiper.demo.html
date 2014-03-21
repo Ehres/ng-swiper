@@ -7,46 +7,46 @@
   <title>Swiper demo</title>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" type="text/css" />
   <link rel="stylesheet" href="http://rawgithub.com/nolimits4web/Swiper/master/dist/idangerous.swiper.css" type="text/css" />
+  <link rel="stylesheet" href="http://getbootstrap.com/assets/css/docs.min.css" type="text/css" />
   <script type="text/javascript" src="http://rawgithub.com/nolimits4web/Swiper/master/dist/idangerous.swiper.min.js"></script>
   <script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
   <script type="text/javascript" src="../swiper.js"></script>
   <script type="text/javascript" src="../slide.js"></script>
   <script type="text/javascript" src="swiper.demo.js"></script>
   <style type="text/css">
-    /* ===============================================================
+  /* ===============================================================
     Your custom styles, here you need to specify container's and slide's
     sizes, pagination, etc.
     ================================================================*/
-    .swiper-container {
-      /* Specify Swiper's Size: */
-    }
-    .swiper-slide {
-      /* Specify Slides's Size: */
-      background-color: #000;
-      /*display: inline-block;*/
-      color:white;
-      text-align: center;
-    }
-    .swiper-slide-active {
-      /* Specific active slide styling: */
-    }
-    .swiper-slide-visible {
-      /* Specific visible slide styling: */
-    }
-    /* ===============================================================
+  .swiper-container {
+    /* Specify Swiper's Size: */
+  }
+  .swiper-slide {
+    /* Specify Slides's Size: */
+    /*display: inline-block;*/
+    color:#ff0005;
+    text-align: center;
+  }
+  .swiper-slide-active {
+    /* Specific active slide styling: */
+  }
+  .swiper-slide-visible {
+    /* Specific visible slide styling: */
+  }
+  /* ===============================================================
     Pagination Styles
     ================================================================*/
-    .swiper-pagination-switch {
-      /* Stylize pagination button: */
-    }
-    .swiper-active-switch {
-      /* Specific active button style: */
-    }
-    .swiper-visible-switch {
-      /* Specific visible button style: */
-    }
-    .swiper-container {
-    }
+  .swiper-pagination-switch {
+    /* Stylize pagination button: */
+  }
+  .swiper-active-switch {
+    /* Specific active button style: */
+  }
+  .swiper-visible-switch {
+    /* Specific visible button style: */
+  }
+  .swiper-container {
+  }
   </style>
 </head>
 
@@ -55,10 +55,35 @@
     <div class="row">
       <h2>Swiper demo</h2>
       <pre>{{slides | json}}</pre>
-      <div id="swiper" swiper>
+
+
+      <div class="bs-example">
+        <div class="row">
+          <div class="col-xs-3">
+            <label>Swipe :</label>
+            <div>
+              <div class="btn-group">
+                <button class="btn btn-default" ng-click="$swipePrev()">Previous</button>
+                <button class="btn btn-default" ng-click="$swipeNext()">Next</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <label>Swipe to :</label>
+            <div class="input-group col-xs-4">
+              <input type="text" class="form-control pull-left" ng-model="currentSlide">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="$swipeTo(currentSlide, 1000)">Go</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="highlight">
+      <div swiper>
         <div slide ng-repeat="slide in slides">
           <div ng-bind="slide.title"></div>
-          <div ng-bind="slide.name"></div>
         </div>
       </div>
     </div>

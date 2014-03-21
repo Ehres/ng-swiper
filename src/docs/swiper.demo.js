@@ -6,18 +6,22 @@ angular.module('ehres.ngSwiperDocs')
   .config(function($swiperProvider) {
     angular.extend($swiperProvider.defaults, {
       swiper : {
-        loop            : false,
-        autoplay        : false,
+        loop     : false,
+        autoplay : false,
       },
-      template        : 'swiper.tpl.demo.html'
+      template : 'swiper.tpl.demo.html'
     });
   })
   .controller('SwiperDemoCtrl', function($scope) {
     $scope.slides = [{
-      title           : 'foo',
-      name            : 'bar'
+      title : 'Slide 1'
     }, {
-      title           : 'oof',
-      name            : 'rab'
+      title : 'Slide 2'
     }];
+    $scope.currentSlide = 0;
+
+    $scope.$on('$swiper:onFirstInit', function(swiper){
+      console.log('on first init');
+    });
+
   });
