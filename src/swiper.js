@@ -107,9 +107,63 @@ angular.module('ehres.ngSwiper', [])
 
         // Common vars
         var options = angular.extend({}, defaults, config);
-        var scope   = $swiper.$scope = options.scope && options.scope.$new() || $rootScope.$new();
+        var scope   = $swiper.$scope = options.scope;
 
+        //Callbacks
+        options.swiper.onFirstInit            = function( swiper ){             scope.$broadcast( '$swiper:onFirstInit',            swiper); };
+        options.swiper.onInit                 = function( swiper ){             scope.$broadcast( '$swiper:onInit',                 swiper); };
+        options.swiper.onSwiperCreated        = function( swiper ){             scope.$broadcast( '$swiper:onSwiperCreated',        swiper); };
+        options.swiper.onTouchStart           = function( swiper ){             scope.$broadcast( '$swiper:onTouchStart',           swiper); };
+        options.swiper.onTouchMove            = function( swiper ){             scope.$broadcast( '$swiper:onTouchMove',            swiper); };
+        options.swiper.onTouchEnd             = function( swiper ){             scope.$broadcast( '$swiper:onTouchEnd',             swiper); };
+        options.swiper.onSlideReset           = function( swiper ){             scope.$broadcast( '$swiper:onSlideReset',           swiper); };
+        options.swiper.onSlideChangeStart     = function( swiper, direction ){  scope.$broadcast( '$swiper:onSlideChangeStart',     swiper, direction); };
+        options.swiper.onSlideChangeEnd       = function( swiper, direction ){  scope.$broadcast( '$swiper:onSlideChangeEnd',       swiper, direction); };
+        options.swiper.onSlidePrev            = function( swiper ){             scope.$broadcast( '$swiper:onSlidePrev',            swiper); };
+        options.swiper.onSlideNext            = function( swiper ){             scope.$broadcast( '$swiper:onSlideNext',            swiper); };
+        options.swiper.onSlideClick           = function( swiper ){             scope.$broadcast( '$swiper:onSlideClick',           swiper); };
+        options.swiper.onSlideTouch           = function( swiper ){             scope.$broadcast( '$swiper:onSlideTouch',           swiper); };
+        options.swiper.onImagesReady          = function( swiper ){             scope.$broadcast( '$swiper:onImagesReady',          swiper); };
+        options.swiper.onMomentumBounce       = function( swiper ){             scope.$broadcast( '$swiper:onMomentumBounce',       swiper); };
+        options.swiper.onResistanceBefore     = function( swiper , p ){         scope.$broadcast( '$swiper:onResistanceBefore',     swiper, p); };
+        options.swiper.onResistanceAfter      = function( swiper , p ){         scope.$broadcast( '$swiper:onResistanceAfter',      swiper, p); };
+        options.swiper.onSetWrapperTransition = function( swiper , duration ){  scope.$broadcast( '$swiper:onSetWrapperTransition', swiper, duration); };
+        options.swiper.onSetWrapperTransform  = function( swiper , transform ){ scope.$broadcast( '$swiper:onSetWrapperTransform',  swiper, transform); };
+
+        //init
         $swiper = new Swiper(element, options.swiper);
+
+        //functions
+        scope.$swipeNext            = $swiper.swipeNext;
+        scope.$swipePrev            = $swiper.swipePrev;
+        scope.$swipeTo              = $swiper.swipeTo;
+        scope.$supportTouch         = $swiper.support.touch;
+        scope.$supportTransforms    = $swiper.support.transforms;
+        scope.$supportTransforms3d  = $swiper.support.transforms3d;
+        scope.$supportTransisions   = $swiper.support.transitions;
+        scope.$activeSlide          = $swiper.activeSlide;
+        scope.$clickedSlideIndex    = $swiper.clickedSlideIndex;
+        scope.$clickedSlide         = $swiper.clickedSlide;
+        scope.$activeIndex          = $swiper.activeIndex;
+        scope.$activeLoopIndex      = $swiper.activeLoopIndex;
+        scope.$activeLoaderIndex    = $swiper.activeLoaderIndex;
+        scope.$previousIndex        = $swiper.previousIndex;
+        scope.$startAutoPlay        = $swiper.startAutoPlay;
+        scope.$stopAutoPlay         = $swiper.stopAutoPlay;
+        scope.$destroy              = $swiper.destroy;
+        scope.$resizeFix            = $swiper.resizeFix;
+        scope.$reInit               = $swiper.reInit;
+        scope.$width                = $swiper.width;
+        scope.$height               = $swiper.height;
+        scope.$isTouched            = $swiper.isTouched;
+        scope.$positions            = $swiper.positions;
+        scope.$touches              = $swiper.touches;
+        scope.$params               = $swiper.params;
+        scope.$getWrapperTranslate  = $swiper.getWrapperTranslate;
+        scope.$setWrapperTranslate  = $swiper.setWrapperTranslate;
+        scope.$wrapperTransitionEnd = $swiper.wrapperTransitionEnd;
+
+        return $swiper;
       }
 
       SwiperFactory.defaults = defaults;
@@ -122,7 +176,6 @@ angular.module('ehres.ngSwiper', [])
 
     return {
       restrict: 'EAC',
-      scope: true,
       replace: true,
       transclude : true,
       templateUrl: function(element, options) {
