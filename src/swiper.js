@@ -110,62 +110,98 @@ angular.module('ehres.ngSwiper', [])
         var scope   = $swiper.$scope = options.scope;
 
         //Callbacks
-        options.swiper.onFirstInit            = function( swiper ){             scope.$broadcast( '$swiper:onFirstInit',            swiper); };
-        options.swiper.onInit                 = function( swiper ){             scope.$broadcast( '$swiper:onInit',                 swiper); };
-        options.swiper.onSwiperCreated        = function( swiper ){             scope.$broadcast( '$swiper:onSwiperCreated',        swiper); };
-        options.swiper.onTouchStart           = function( swiper ){             scope.$broadcast( '$swiper:onTouchStart',           swiper); };
-        options.swiper.onTouchMove            = function( swiper ){             scope.$broadcast( '$swiper:onTouchMove',            swiper); };
-        options.swiper.onTouchEnd             = function( swiper ){             scope.$broadcast( '$swiper:onTouchEnd',             swiper); };
-        options.swiper.onSlideReset           = function( swiper ){             scope.$broadcast( '$swiper:onSlideReset',           swiper); };
-        options.swiper.onSlideChangeStart     = function( swiper, direction ){  scope.$broadcast( '$swiper:onSlideChangeStart',     swiper, direction); };
-        options.swiper.onSlideChangeEnd       = function( swiper, direction ){  scope.$broadcast( '$swiper:onSlideChangeEnd',       swiper, direction); };
-        options.swiper.onSlidePrev            = function( swiper ){             scope.$broadcast( '$swiper:onSlidePrev',            swiper); };
-        options.swiper.onSlideNext            = function( swiper ){             scope.$broadcast( '$swiper:onSlideNext',            swiper); };
-        options.swiper.onSlideClick           = function( swiper ){             scope.$broadcast( '$swiper:onSlideClick',           swiper); };
-        options.swiper.onSlideTouch           = function( swiper ){             scope.$broadcast( '$swiper:onSlideTouch',           swiper); };
-        options.swiper.onImagesReady          = function( swiper ){             scope.$broadcast( '$swiper:onImagesReady',          swiper); };
-        options.swiper.onMomentumBounce       = function( swiper ){             scope.$broadcast( '$swiper:onMomentumBounce',       swiper); };
-        options.swiper.onResistanceBefore     = function( swiper , p ){         scope.$broadcast( '$swiper:onResistanceBefore',     swiper, p); };
-        options.swiper.onResistanceAfter      = function( swiper , p ){         scope.$broadcast( '$swiper:onResistanceAfter',      swiper, p); };
-        options.swiper.onSetWrapperTransition = function( swiper , duration ){  scope.$broadcast( '$swiper:onSetWrapperTransition', swiper, duration); };
-        options.swiper.onSetWrapperTransform  = function( swiper , transform ){ scope.$broadcast( '$swiper:onSetWrapperTransform',  swiper, transform); };
+        // options.swiper.onFirstInit            = function( swiper ){             scope.$broadcast( '$swiper:onFirstInit',            swiper); };
+        // options.swiper.onInit                 = function( swiper ){             scope.$broadcast( '$swiper:onInit',                 swiper); };
+        // options.swiper.onSwiperCreated        = function( swiper ){             scope.$broadcast( '$swiper:onSwiperCreated',        swiper); };
+        // options.swiper.onTouchStart           = function( swiper ){             scope.$broadcast( '$swiper:onTouchStart',           swiper); };
+        // options.swiper.onTouchMove            = function( swiper ){             scope.$broadcast( '$swiper:onTouchMove',            swiper); };
+        // options.swiper.onTouchEnd             = function( swiper ){             scope.$broadcast( '$swiper:onTouchEnd',             swiper); };
+        // options.swiper.onSlideReset           = function( swiper ){             scope.$broadcast( '$swiper:onSlideReset',           swiper); };
+        // options.swiper.onSlideChangeStart     = function( swiper, direction ){  scope.$broadcast( '$swiper:onSlideChangeStart',     swiper, direction); };
+        // options.swiper.onSlideChangeEnd       = function( swiper, direction ){  scope.$broadcast( '$swiper:onSlideChangeEnd',       swiper, direction); };
+        // options.swiper.onSlidePrev            = function( swiper ){             scope.$broadcast( '$swiper:onSlidePrev',            swiper); };
+        // options.swiper.onSlideNext            = function( swiper ){             scope.$broadcast( '$swiper:onSlideNext',            swiper); };
+        // options.swiper.onSlideClick           = function( swiper ){             scope.$broadcast( '$swiper:onSlideClick',           swiper); };
+        // options.swiper.onSlideTouch           = function( swiper ){             scope.$broadcast( '$swiper:onSlideTouch',           swiper); };
+        // options.swiper.onImagesReady          = function( swiper ){             scope.$broadcast( '$swiper:onImagesReady',          swiper); };
+        // options.swiper.onMomentumBounce       = function( swiper ){             scope.$broadcast( '$swiper:onMomentumBounce',       swiper); };
+        // options.swiper.onResistanceBefore     = function( swiper , p ){         scope.$broadcast( '$swiper:onResistanceBefore',     swiper, p); };
+        // options.swiper.onResistanceAfter      = function( swiper , p ){         scope.$broadcast( '$swiper:onResistanceAfter',      swiper, p); };
+        // options.swiper.onSetWrapperTransition = function( swiper , duration ){  scope.$broadcast( '$swiper:onSetWrapperTransition', swiper, duration); };
+        // options.swiper.onSetWrapperTransform  = function( swiper , transform ){ scope.$broadcast( '$swiper:onSetWrapperTransform',  swiper, transform); };
 
         //init
         $swiper = new Swiper(element, options.swiper);
 
         //functions
-        scope.$swipeNext            = $swiper.swipeNext;
-        scope.$swipePrev            = $swiper.swipePrev;
-        scope.$swipeTo              = $swiper.swipeTo;
-        scope.$supportTouch         = $swiper.support.touch;
-        scope.$supportTransforms    = $swiper.support.transforms;
-        scope.$supportTransforms3d  = $swiper.support.transforms3d;
-        scope.$supportTransisions   = $swiper.support.transitions;
-        scope.$activeSlide          = $swiper.activeSlide;
-        scope.$clickedSlideIndex    = $swiper.clickedSlideIndex;
-        scope.$clickedSlide         = $swiper.clickedSlide;
-        scope.$activeIndex          = $swiper.activeIndex;
-        scope.$activeLoopIndex      = $swiper.activeLoopIndex;
-        scope.$activeLoaderIndex    = $swiper.activeLoaderIndex;
-        scope.$previousIndex        = $swiper.previousIndex;
-        scope.$startAutoPlay        = $swiper.startAutoPlay;
-        scope.$stopAutoPlay         = $swiper.stopAutoPlay;
-        scope.$destroy              = $swiper.destroy;
-        scope.$resizeFix            = $swiper.resizeFix;
-        scope.$reInit               = $swiper.reInit;
-        scope.$width                = $swiper.width;
-        scope.$height               = $swiper.height;
-        scope.$isTouched            = $swiper.isTouched;
-        scope.$positions            = $swiper.positions;
-        scope.$touches              = $swiper.touches;
-        scope.$params               = $swiper.params;
-        scope.$getWrapperTranslate  = $swiper.getWrapperTranslate;
-        scope.$setWrapperTranslate  = $swiper.setWrapperTranslate;
-        scope.$wrapperTransitionEnd = $swiper.wrapperTransitionEnd;
+        // scope.$swipeNext            = $swiper.swipeNext;
+        // scope.$swipePrev            = $swiper.swipePrev;
+        // scope.$swipeTo              = $swiper.swipeTo;
+        // scope.$activeSlide          = $swiper.activeSlide;
+        // scope.$startAutoPlay        = $swiper.startAutoPlay;
+        // scope.$stopAutoPlay         = $swiper.stopAutoPlay;
+        // scope.$destroy              = $swiper.destroy;
+        // scope.$resizeFix            = $swiper.resizeFix;
+        // scope.$reInit               = $swiper.reInit;
+        // scope.$getWrapperTranslate  = $swiper.getWrapperTranslate;
+        // scope.$setWrapperTranslate  = $swiper.setWrapperTranslate;
+        // scope.$wrapperTransitionEnd = $swiper.wrapperTransitionEnd;
+
+        scope.$swiper = $swiper;
+        // console.warn(Object.keys($swiper), $swiper);
+
+        //Variables
+        // scope.$watch(function(){ return $swiper.activeIndex; }, function(newValue, oldValue){
+        //   scope.$activeIndex = newValue;
+        // });
+        // scope.$watch(function(){ return $swiper.support.touch; }, function(newValue, oldValue){
+        //   scope.$supportTouch = newValue;
+        // });
+        // scope.$watch(function(){ return $swiper.support.transforms; }, function(newValue, oldValue){
+        //   scope.$supportTransforms = newValue;
+        // });
+        // scope.$watch(function(){ return $swiper.support.transforms3d; }, function(newValue, oldValue){
+        //   scope.$supportTransforms3d = newValue;
+        // });
+        // scope.$watch(function(){ return $swiper.support.transitions; }, function(newValue, oldValue){
+        //   scope.$supportTransisions = newValue;
+        // });
+        // scope.$watch(function(){ return $swiper.clickedSlideIndex; }, function(newValue, oldValue){
+        //   scope.$clickedSlideIndex = newValue;
+        // });
+        // scope.$watch(function(){ return $swiper.clickedSlide; }, function(newValue, oldValue){
+        //   scope.$clickedSlide = newValue;
+        // });
+        // scope.$watch(function(){ return $swiper.activeLoopIndex; }, function(newValue, oldValue){
+        //   scope.$activeLoopIndex = newValue;
+        // });
+        // scope.$watch(function(){ return $swiper.activeLoaderIndex; }, function(newValue, oldValue){
+        //   scope.$activeLoaderIndex = newValue;
+        // });
+        // scope.$watch(function(){ return $swiper.previousIndex; }, function(newValue, oldValue){
+        //   scope.$previousIndex = newValue;
+        // });
+        // scope.$watch(function(){ return $swiper.width; }, function(newValue, oldValue){
+        //   scope.$width = newValue;
+        // });
+        // scope.$watch(function(){ return $swiper.height; }, function(newValue, oldValue){
+        //   scope.$height = newValue;
+        // });
+        // scope.$watch(function(){ return $swiper.isTouched; }, function(newValue, oldValue){
+        //   scope.$isTouched = newValue;
+        // });
+        // scope.$watch(function(){ return $swiper.positions; }, function(newValue, oldValue){
+        //   scope.$positions = newValue;
+        // });
+        // scope.$watch(function(){ return $swiper.touches; }, function(newValue, oldValue){
+        //   scope.$touches = newValue;
+        // });
+        // scope.$watch(function(){ return $swiper.params; }, function(newValue, oldValue){
+        //   scope.$params = newValue;
+        // });
 
         return $swiper;
       }
-
       SwiperFactory.defaults = defaults;
       return SwiperFactory;
     };
@@ -188,7 +224,8 @@ angular.module('ehres.ngSwiper', [])
         var options = {
           scope: scope
         };
-        // angular.forEach(['mode', 'slidesPerView', 'loop', 'loopAdditionalSlides', 'updateOnImagesReady', 'initialSlide', 'resistance', 'offsetPxAfter', 'offsetPxBefore'], function(key) {
+
+        // angular.forEach(['speed', 'mode', 'loop', 'slidesPerView', 'resistance', 'freeMode', 'freeModeFluid'], function(key) {
         //   if (angular.isDefined(attr[key])) options[key] = attr[key];
         // });
 
