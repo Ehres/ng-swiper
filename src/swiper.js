@@ -106,7 +106,9 @@ angular.module('ehres.ngSwiper', [])
         var $swiper = {};
 
         // Common vars
+        var tdFlow = angular.copy(defaults.swiper.tdFlow);
         var options = angular.extend({}, defaults, config);
+        options.swiper.tdFlow = tdFlow;
         var scope   = $swiper.$scope = options.scope;
 
         //init
@@ -128,16 +130,18 @@ angular.module('ehres.ngSwiper', [])
       restrict: 'EAC',
       replace: true,
       transclude : true,
+      require: '?ngModel',
       templateUrl: function(element, options) {
         var attr = options.$attr;
         return attr.template || defaults.template;
       },
-      link: function postLink(scope, element, attr) {
+      link: function postLink(scope, element, attr, controller) {
 
-        // Swiper options
-        var options = {
-          scope: scope
-        };
+        // Directive options
+        var options = {scope: scope, swiper : {}};
+        angular.forEach(['autoplay'], function(key) {
+          if(angular.isDefined(attr[key])) options.swiper[key] = attr[key];
+        });
 
         // Support scope as an object
         attr.swiper && scope.$watch(attr.swiper, function(newValue, oldValue) {
@@ -145,9 +149,31 @@ angular.module('ehres.ngSwiper', [])
         }, true);
 
         //Initialize Swiper
+        var swiper;
         $timeout(function() {
-          $swiper(element[0], options);
+          swiper = $swiper(element[0], options);
+          swiper.addCallback('SlideChangeEnd', function(swiper) {
+            // View -> Model
+            if(controller) {
+              controller.$setViewValue(swiper.activeIndex);
+              scope.$digest();
+            }
+          });
         });
+
+        // Model -> View
+        if(controller) {
+          controller.$formatters.push(function(modelValue) {
+            swiper && swiper.swipeTo(modelValue);
+            return modelValue;
+          });
+        }
+
+       // Garbage collection
+        scope.$on('$destroy', function() {
+          swiper.destroy();
+        });
+
       }
     };
   });
